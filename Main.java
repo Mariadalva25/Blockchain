@@ -22,7 +22,6 @@ class Bloco {
         }
     }
 
-    // Método para calcular o hash do bloco
     public String calcularHash() {
         return sha256(hashAnterior + transacoes.toString() + nonce);
     }
@@ -58,7 +57,7 @@ class Blockchain {
 
     public Blockchain() {
         blocos = new ArrayList<>();
-        blocos.add(new Bloco("0", List.of("Bloco Gênese"))); // Bloco gênese
+        blocos.add(new Bloco("0", List.of("Bloco Gênese"))); 
         historicoTransacoes = new HashMap<>();
     }
 
@@ -105,16 +104,16 @@ class Carteira {
     private String chavePrivada;
     private String chavePublica;
 
-    // Construtor que gera um par de chaves simples
+
     public Carteira() {
-        // Gerando chave privada única usando UUID
+
         this.chavePrivada = UUID.randomUUID().toString();
 
-        // Gerando chave pública a partir do hash da chave privada
+        
         this.chavePublica = sha256(chavePrivada);
     }
 
-    // Método simples para gerar um hash (SHA-256) da chave privada
+    
     private String sha256(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -139,15 +138,14 @@ class Carteira {
         return chavePublica;
     }
 
-    // Método simples para assinar uma transação (assina com a chave privada)
-    public String assinarTransacao(String transacao) {
-        // Simulando a assinatura (na prática, isso seria uma operação de criptografia)
-        return sha256(transacao + chavePrivada); // "Assinando" com a chave privada
-    }
 
-    // Método para verificar a assinatura (simulação simples)
+    public String assinarTransacao(String transacao) {
+        
+        return sha256(transacao + chavePrivada); 
+
+
     public boolean verificarAssinatura(String transacao, String assinatura) {
-        // Simplesmente verifica se a assinatura corresponde ao hash esperado
+     
         return assinatura.equals(sha256(transacao + chavePrivada));
     }
 }
@@ -178,23 +176,23 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Iniciando Blockchain");
 
-        // Criando uma nova carteira
+
         Carteira carteira = new Carteira();
         System.out.println("Chave pública da carteira: " + carteira.getChavePublica());
         System.out.println("Chave privada da carteira: " + carteira.getChavePrivada());
 
-        // Criando transações usando objetos Transacao
+        
         Transacao t1 = new Transacao("Alice", "Bob", 10);
         Transacao t2 = new Transacao("Bob", "Charlie", 5);
 
-        // Assinando transações
+    
         String assinaturaT1 = carteira.assinarTransacao(t1.toString());
         String assinaturaT2 = carteira.assinarTransacao(t2.toString());
 
         System.out.println("Assinatura da transação 1: " + assinaturaT1);
         System.out.println("Assinatura da transação 2: " + assinaturaT2);
 
-        // Verificando as assinaturas
+    
         boolean verificadoT1 = carteira.verificarAssinatura(t1.toString(), assinaturaT1);
         boolean verificadoT2 = carteira.verificarAssinatura(t2.toString(), assinaturaT2);
         System.out.println("Assinatura da transação 1 verificada: " + verificadoT1);
@@ -203,7 +201,7 @@ public class Main {
         Blockchain blockchain = new Blockchain();
         int dificuldade = 4;
 
-        // Adicionando blocos com transações
+    
         List<String> transacoes = new ArrayList<>();
         transacoes.add(t1.toString());
         transacoes.add(t2.toString());

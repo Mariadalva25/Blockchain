@@ -1,7 +1,5 @@
 # Rede Blockchain
- O sistema permite a criação de transações, a inclusão delas em blocos, a inserção desses blocos na rede e a validação da autenticidade. Além disso, o projeto garante a integridade e validação da rede como um todo. Desafio proposto durante a trilha de aprendizado do programa de bolsas de Blockchain - Compass.
-
- # Configuração inicial
+ O sistema permite a criação de transações, a assinatura delas para garantir sua autenticidade, a inclusão das transações em blocos, a adição desses blocos à rede e a validação através do mecanismo de Proof of Work, utilizando nonce e dificuldade. Além disso, o projeto assegura a integridade e a validação de toda a rede. Esse é o desafio proposto na trilha de aprendizado do programa de bolsas de Blockchain - Compass.
  ---
  O sistema foi desenvolvido em java
 * Configurar o Ambiente
