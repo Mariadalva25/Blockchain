@@ -13,7 +13,7 @@ class Bloco {
         this.transacoes = transacoes;
         this.nonce = 0;
         this.hash = calcularHash();
-        this.recompensaMinerador = 0.0; // Inicializando a recompensa do minerador
+        this.recompensaMinerador = 0.0; 
     }
 
     public void minerar(int dificuldade, double recompensa) {
@@ -22,7 +22,7 @@ class Bloco {
             nonce++;
             hash = calcularHash();
         }
-        this.recompensaMinerador = recompensa; // Atribuindo a recompensa para o minerador
+        this.recompensaMinerador = recompensa;
     }
 
     public String calcularHash() {
@@ -82,7 +82,7 @@ class Blockchain {
             historicoTransacoes.putIfAbsent(remetente, new ArrayList<>());
             historicoTransacoes.get(remetente).add(transacao);
 
-            // Atualizar saldos
+            
             if (saldos.containsKey(remetente)) {
                 double saldoRemetente = saldos.get(remetente);
                 saldoRemetente -= Double.parseDouble(partes[2].trim());
@@ -101,7 +101,7 @@ class Blockchain {
             }
         }
 
-        // Recompensar o minerador
+        
         String minerador = "Minerador";
         saldos.put(minerador, saldos.getOrDefault(minerador, 0.0) + novoBloco.getRecompensaMinerador());
     }
@@ -194,7 +194,7 @@ class Transacao {
         this.remetente = remetente;
         this.destinatario = destinatario;
         this.valor = valor;
-        this.taxa = 0.01; // Taxa fixa de transação
+        this.taxa = 0.01; 
     }
 
     public double getTaxa() {
@@ -236,7 +236,7 @@ public class Main {
 
         Blockchain blockchain = new Blockchain();
         int dificuldade = 4;
-        double recompensaMinerador = 10; // Recompensa para o minerador
+        double recompensaMinerador = 10; 
 
         List<String> transacoes = new ArrayList<>();
         transacoes.add(t1.toString());
